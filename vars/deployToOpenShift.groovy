@@ -5,7 +5,7 @@ def call(String OPENSHIFT_CREDENTIALS_ID, String OPENSHIFT_PROJECT, String CLUST
     
     // Login to OpenShift using the service account token
     withCredentials([string(credentialsId: OPENSHIFT_CREDENTIALS_ID, variable: 'OC_TOKEN')]) {
-        sh "oc login --token=$OC_TOKEN --server=$CLUSTER_URL --insecure-skip-tls-verify"
+        sh "oc login --token=$sa_token --server=$CLUSTER_URL --insecure-skip-tls-verify"
     }
 
     // Apply the updated deployment.yaml to the OpenShift cluster
